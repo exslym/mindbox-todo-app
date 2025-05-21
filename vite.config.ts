@@ -4,4 +4,5 @@ import tsconfigPaths from 'vite-plugin-tsconfig-paths';
 
 export default defineConfig({
 	plugins: [react(), tsconfigPaths()],
+	base: '/mindbox-todo-app/',
 });

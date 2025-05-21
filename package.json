@@ -3,7 +3,7 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
-	"homepage": "https://exslym.github.io/mindbox-todo-app/#",
+	"homepage": "https://exslym.github.io/mindbox-todo-app/",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc -b && vite build",
@@ -11,7 +11,7 @@
 		"preview": "vite preview",
 		"test": "NODE_OPTIONS=--experimental-vm-modules jest --config=jest.config.mjs",
 		"test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --config=jest.config.mjs --watch",
-		"deploy": "gh-pages -d dist"
+		"deploy": "npm run build && gh-pages -d dist"
 	},
 	"dependencies": {
 		"@radix-ui/react-checkbox": "^1.3.2",
