@@ -1,48 +1,34 @@
+import { FilterType } from '@/types/types';
 import React from 'react';
 import { Button } from './ui/button';
 
 type Props = {
-	filter: string;
-	onFilterChange: (filter: string) => void;
+	filter: FilterType;
+	onFilterChange: (filter: FilterType) => void;
 };
+
+const filters: { value: FilterType; label: string }[] = [
+	{ value: 'all', label: 'All' },
+	{ value: 'active', label: 'Active' },
+	{ value: 'completed', label: 'Completed' },
+];
 
 export const TodoFilter: React.FC<Props> = ({ filter, onFilterChange }) => {
 	return (
-		<div className='flex items-center justify-between gap-1'>
-			<Button
-				variant='ghost'
-				size='sm'
-				className={`text-xs py-0.5 px-1 h-auto rounded-sm ${
-					filter === 'all' ? 'border border-indigo-300' : 'border-transparent'
-				}`}
-				onClick={() => onFilterChange('all')}
-			>
-				All
-			</Button>
-			<Button
-				variant='ghost'
-				size='sm'
-				className={`text-xs py-0.5 px-1 h-auto rounded-sm ${
-					filter === 'active'
-						? 'border border-indigo-300'
-						: 'border-transparent'
-				}`}
-				onClick={() => onFilterChange('active')}
-			>
-				Active
-			</Button>
-			<Button
-				variant='ghost'
-				size='sm'
-				className={`text-xs py-0.5 px-1 h-auto rounded-sm ${
-					filter === 'completed'
-						? 'border border-indigo-300'
-						: 'border-transparent'
-				}`}
-				onClick={() => onFilterChange('completed')}
-			>
-				Completed
-			</Button>
+		<div className='flex items-center gap-1'>
+			{filters.map(({ value, label }) => (
+				<Button
+					key={value}
+					variant='ghost'
+					size='sm'
+					className={`text-xs py-0.5 px-1 h-auto rounded-sm capitalize ${
+						filter === value ? 'border border-indigo-300' : 'border-transparent'
+					}`}
+					onClick={() => onFilterChange(value)}
+				>
+					{label}
+				</Button>
+			))}
 		</div>
 	);
 };

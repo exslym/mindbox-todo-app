@@ -4,6 +4,7 @@ import { TodoFilter } from './components/TodoFilter';
 import { TodoInput } from './components/TodoInput';
 import { TodoList } from './components/TodoList';
 import { useTodos } from './hooks/useTodos';
+import { FilterType } from './types/types';
 
 function App() {
 	const {
@@ -15,7 +16,7 @@ function App() {
 		completedTodos,
 	} = useTodos();
 
-	const [filter, setFilter] = useState<string>('all');
+	const [filter, setFilter] = useState<FilterType>('all');
 
 	const filteredTodos =
 		filter === 'all'
